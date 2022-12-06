@@ -58,6 +58,15 @@ function App() {
     
     setList((previous) => {
       return previous.map((item) => {
+        if(item.id === idOfTickedItem){
+          const response = fetch(`${url}/items/${idOfTickedItem}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ item: item.item, completed: !item.completed }),
+      
+          })
+        }
+        
         return item.id !== idOfTickedItem
           ? item
           : { ...item, completed: !item.completed };
@@ -66,12 +75,7 @@ function App() {
       
 
     })
-const response = await fetch(`${url}/items/${idOfTickedItem}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ completed: !list[0].completed }),
-
-    });console.log(!list[0].completed)
+;console.log(!list[0].completed)
   }
 
   return (
