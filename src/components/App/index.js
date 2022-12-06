@@ -54,14 +54,24 @@ function App() {
     setList(clearedList);
   }
 
-  function tickItem(idOfTickedItem) {
+  async function tickItem(idOfTickedItem) {
+    
     setList((previous) => {
       return previous.map((item) => {
         return item.id !== idOfTickedItem
           ? item
           : { ...item, completed: !item.completed };
       });
-    });
+      
+      
+
+    })
+const response = await fetch(`${url}/items/${idOfTickedItem}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ completed: !list[0].completed }),
+
+    });console.log(!list[0].completed)
   }
 
   return (
