@@ -17,7 +17,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://shopping-with-em-and-filip.onrender.com/items",
+  // "proxy": "https://shopping-with-em-and-filip.onrender.com/items",
   "eslintConfig": {
     "extends": "react-app"
   },
